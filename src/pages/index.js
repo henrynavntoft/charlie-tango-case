@@ -11,7 +11,7 @@ export default function Home() {
         <h1 className={styles.headline}>Hello MMD</h1>
         <div className={styles.content}>
           <p>
-            To get started, edit <code>pages/index.js</code> and save to reload.
+            To get started, <code>pages/index.js</code> and save to reload.
           </p>
         </div>
         <div className={styles.content}>
