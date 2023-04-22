@@ -1,5 +1,8 @@
 import Head from "next/head";
 import styles from "./Home.module.css";
+import { estateTypes } from "../data/estateTypes";
+import MyInput from '../components/MyInput';
+import MyDropDown from '../components/MyDropDown';
 
 export default function Home() {
   return (
@@ -8,35 +11,19 @@ export default function Home() {
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
-        <h1 className={styles.headline}>Hello MMD</h1>
         <div className={styles.content}>
-          <p>
-            To get started, <code>pages/index.js</code> and save to reload.
+          <h1 className={styles.headline}>Find <span>a buyer</span> for your property</h1>
+          <p>Get free access to our large buyer directory and see if there is interest in homes like yours in your local area.
           </p>
-        </div>
-        <div className={styles.content}>
-          <h2>this is a kama test</h2>
-          <p>
-            This is a test text-sofia.This is simple example of how you could submit a form to another
-            page in Next.js, without using a custom <code>submit</code> function
-            (e.g. without JavaScript). It is unstyled and unfinished. You can
-            use this as base, or implement your own solution.
-          </p>
-          <p>
-            Make sure to read the guide on{" "}
-            <a
-              href="https://nextjs.org/docs/guides/building-forms"
-              target="_blank"
-            >
-              building forms in Next.js
-            </a>
-          </p>
-          <form action="/buyers" method="GET" className={styles.form}>
-            <label>
-              <span className={styles.label}>Zip Code</span>
-              <input name="zipCode" required />
-            </label>
-            <button className={styles.button}>Submit</button>
+          <form action="/send-data-here" method="post" className={styles.form}> 
+           <fieldset>
+             <MyInput label="Price" id="price" name="price" type="number" inputMode="numeric" enterKeyHint="next" required />
+             <MyInput label="Size" id="size" name="size" type="number" inputMode="decimal" enterKeyHint="next" required  />
+             <MyInput label="Zip Code" id="zipcode" name="zipcode" type="number" inputMode="numeric" enterKeyHint="next" required  />
+             <MyDropDown label="Estate Type" id="estatetype" name="estateType" options={estateTypes}/>
+           </fieldset>
+           <button type="button" className={styles.button}>Find potential buyers
+           </button>
           </form>
         </div>
       </div>

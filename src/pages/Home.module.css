@@ -1,18 +1,22 @@
 .headline {
-  font-size: 5rem;
-  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-family: var(--font-sans);
   text-align: center;
   font-weight: 400;
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
 
+.headline span {
+  font-family: var(--font-serif);
+}
+
 .content {
   padding: 1rem;
-  background-color: var(--dusty-aqua-light);
-  border: 1px solid var(--dusty-aqua);
-  margin-bottom: 1rem
+  background-color: var(--white);
+  margin-bottom: 1rem;
 }
+
 .content :first-child {
   margin-top: 0;
 }
@@ -21,25 +25,42 @@
 }
 
 .form {
-  background-color: var(--dusty-blue-lighter);
+  background-color: var(--dusty-aqua-light);
   padding: 1rem;
 }
 
 .label {
   margin-bottom: 0.5rem;
+  padding-top: 1rem;
   font-weight: 700;
   display: block;
+  font-size: 1.2rem;
+}
+
+.label span {
+  font-weight: 200;
+  font-size: 0.9rem;
 }
 
 .form input {
   padding: 0.5rem;
+  width: 50%;
 }
 
 .button {
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
+  margin-top: 2rem;
   background: var(--blue);
   color: var(--white);
+  border-radius: 2rem;
+  font-size: 1rem;
 }
+
 .button:hover {
   background: var(--hover);
+}
+
+.dropdown {
+  font-size: 0.8rem;
+  font-size: var(--font-sans);
 }
