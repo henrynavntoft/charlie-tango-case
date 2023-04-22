@@ -17,7 +17,7 @@ export default function Home() {
         <div className={styles.content}>
           <h2>Basic form example</h2>
           <p>
-            This is simple example of how you could submit a form to another
+            This is a test text-sofia.This is simple example of how you could submit a form to another
             page in Next.js, without using a custom <code>submit</code> function
             (e.g. without JavaScript). It is unstyled and unfinished. You can
             use this as base, or implement your own solution.
