@@ -15,7 +15,7 @@ export default function Home() {
           </p>
         </div>
         <div className={styles.content}>
-          <h2>Basic form example</h2>
+          <h2>this is a kama test</h2>
           <p>
             This is simple example of how you could submit a form to another
             page in Next.js, without using a custom <code>submit</code> function
