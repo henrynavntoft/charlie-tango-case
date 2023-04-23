@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./Buyers.module.css";
 import { useState, useEffect } from "react";
 import BuyerCard from "@/components/BuyerCard/BuyerCard";
+import { estateTypes } from "@/data/estateTypes";
 
 export default function Buyers() {
   const { query } = useRouter();
@@ -15,7 +16,12 @@ export default function Buyers() {
         .then((res) => res.json())
         .then((data) => setBuyers(data));
     }
-  }, [query.zipCode, query.estateType, query.size, query.price]);
+  }, [query]);
+
+  function getEstateTypeName(id) {
+    const estateType = estateTypes.find((type) => type.id === id);
+    return estateType ? estateType.name : "Unknown";
+  }
 
   return (
     <>
@@ -23,52 +29,23 @@ export default function Buyers() {
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
+      <h1 className={styles.headline}>Potential buyers</h1>
         <div className={styles.grid}>
-          <BuyerCard
-          key={data.id}
-          id={data.id}
-          onChange={handleChange}
-          description={data.description}
-          estateType={data.estateType}
-          price={data.price}
-          size={data.size}
-          date={data.date}
-        />
-        </div>
-        <h1 className={styles.headline}>Potential buyers</h1>
         {buyers.map((buyer) => (
-          <div key={buyer.id} className={styles.buyer}>
-            <h2>{buyer.description}</h2>
-      </div>
+          <BuyerCard
+            key={buyer.id}
+            id={buyer.id}
+            // onChange={handleChange}
+            description={buyer.description}
+            estateType={getEstateTypeName(buyer.estateType)}
+            price={buyer.maxPrice}
+            size={buyer.minSize}
+            date={buyer.takeoverDate}
+          />
         ))}
-        <p>
-          On this page you get the <code>`query`</code> params like{" "}
-          <code>`zipCode`</code>, and can use them to fetch a list of buyers
-          from the API.
-        </p>
-        <p>
-          Make sure to read the docs on how to fetch data on a page - There are
-          multiple ways of doing it, and you should choose the one that fits
-          your solution best.
-        </p>
-        <ul>
-          <li>
-            <a
-              href="https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props"
-              target="_blank"
-            >
-              next.js - Data fetching
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://react.dev/learn/synchronizing-with-effects#fetching-data"
-              target="_blank"
-            >
-              react.dev - Fetching data
-            </a>
-          </li>
-        </ul>
+        </div>
+      
+        <br></br>
         <div className={styles.content}>
           <h2>Query params:</h2>
           <pre>
