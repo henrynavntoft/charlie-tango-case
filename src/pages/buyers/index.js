@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "./Buyers.module.css";
 import { useState, useEffect } from "react";
+import BuyerCard from "@/components/BuyerCard/BuyerCard";
 
 export default function Buyers() {
   const { query } = useRouter();
@@ -22,12 +23,23 @@ export default function Buyers() {
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
+        <div className={styles.grid}>
+          <BuyerCard
+          key={data.id}
+          id={data.id}
+          onChange={handleChange}
+          description={data.description}
+          estateType={data.estateType}
+          price={data.price}
+          size={data.size}
+          date={data.date}
+        />
+        </div>
         <h1 className={styles.headline}>Potential buyers</h1>
         {buyers.map((buyer) => (
           <div key={buyer.id} className={styles.buyer}>
             <h2>{buyer.description}</h2>
-          
-          </div>
+      </div>
         ))}
         <p>
           On this page you get the <code>`query`</code> params like{" "}

@@ -1,0 +1,21 @@
+.article {
+  background-color: var(--dusty-aqua-light);
+  padding: 1rem;
+}
+
+.id {
+  font-size: 0.8rem;
+}
+
+.description {
+  font-size: 1.3rem;
+}
+
+.article div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.article > div:not(:first-child) {
+  border-top: 1px solid #ccc;
+}
