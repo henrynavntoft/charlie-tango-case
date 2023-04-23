@@ -42,7 +42,7 @@ export function generateBuyerProfile({ price = 5000000, size = 100 } = {}) {
     estateType:
       estateTypes[
         faker.datatype.number({ min: 0, max: estateTypes.length - 1 })
-      ].name,
+      ].id,
     takeoverDate: faker.date
       .between(today, endDate)
       .toISOString()

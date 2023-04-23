@@ -1,9 +1,21 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "./Buyers.module.css";
+import { useState, useEffect } from "react";
 
 export default function Buyers() {
   const { query } = useRouter();
+  const [buyers, setBuyers] = useState([]);
+
+  useEffect(() => {
+    // Check if zipCode exists in the query
+    if (query.zipCode) {
+      fetch(`/api/find-buyers?zipCode=${query.zipCode}&estateType=${query.estateType}&size=${query.size}&price=${query.price}`)
+        .then((res) => res.json())
+        .then((data) => setBuyers(data));
+    }
+  }, [query.zipCode, query.estateType, query.size, query.price]);
+
   return (
     <>
       <Head>
@@ -11,6 +23,12 @@ export default function Buyers() {
       </Head>
       <div className="wrapper">
         <h1 className={styles.headline}>Potential buyers</h1>
+        {buyers.map((buyer) => (
+          <div key={buyer.id} className={styles.buyer}>
+            <h2>{buyer.description}</h2>
+          
+          </div>
+        ))}
         <p>
           On this page you get the <code>`query`</code> params like{" "}
           <code>`zipCode`</code>, and can use them to fetch a list of buyers
