@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 export default function Home() {
   const [zipCode, setZipCode] = useState("");
-  const [estateType, setEstateType] = useState("");
+  const [estateType, setEstateType] = useState(1);
   const [size, setSize] = useState("");
   const [price, setPrice] = useState("");
   const router = useRouter();

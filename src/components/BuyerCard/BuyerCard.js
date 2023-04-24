@@ -26,6 +26,8 @@ export default function BuyerCard({
             <input
               type="checkbox"
               checked={checked}
+              name='buyersomething'
+              value={id}
               onChange={handleCheckboxChange}
             />
             <span className={styles.checkbox} />

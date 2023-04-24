@@ -7,6 +7,7 @@ import { estateTypes } from "@/data/estateTypes";
 
 export default function Buyers() {
   const { query } = useRouter();
+  const router = useRouter()
   const [buyers, setBuyers] = useState([]);
 
   useEffect(() => {
@@ -30,6 +31,8 @@ export default function Buyers() {
       </Head>
       <div className="wrapper">
       <h1 className={styles.headline}>Potential buyers</h1>
+      <button onClick={()=>router.back()}>Back</button>
+      <form action='/contact' method='GET'>
         <div className={styles.grid}>
         {buyers.map((buyer) => (
           <BuyerCard
@@ -44,7 +47,14 @@ export default function Buyers() {
           />
         ))}
         </div>
-      
+        <input type='hidden' name='zipCode' value={query.zipCode}/>
+        <input type='hidden' name='size' value={query.size}/>
+        <input type='hidden' name='price' value={query.price}/>
+        <input type='hidden' name='estateType' value={query.estateType}/>
+
+
+        <button>Submit</button>
+        </form>
         <br></br>
         <div className={styles.content}>
           <h2>Query params:</h2>

@@ -16,6 +16,7 @@ export function Header() {
           priority
         />
       </Link>
+      
     </header>
   );
 }
