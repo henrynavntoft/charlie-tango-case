@@ -23,7 +23,3 @@
 .article > div:not(:first-child) {
   border-top: 1px solid #ccc;
 }
-
-.article:last-child {
-  grid-column: 1/3;
-}
