@@ -1,6 +1,10 @@
 .article {
   background-color: var(--dusty-aqua-light);
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .id {
