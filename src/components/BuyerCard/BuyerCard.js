@@ -1,14 +1,20 @@
+import { useState } from "react";
 import styles from "./BuyerCard.module.css";
 
 export default function BuyerCard({
   id,
-  onChange,
   description,
   estateType,
   price,
   size,
   date,
 }) {
+  const [checked, setChecked] = useState(false);
+
+  const handleCheckboxChange = (event) => {
+    setChecked(event.target.checked);
+  };
+
   return (
     <>
       <article className={styles.article}>
@@ -17,7 +23,11 @@ export default function BuyerCard({
             id<span>{id}</span>
           </p>
           <label className={styles.checkboxLabel}>
-            <input type="checkbox" onChange={onChange} />
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={handleCheckboxChange}
+            />
             <span className={styles.checkbox} />
           </label>
         </div>

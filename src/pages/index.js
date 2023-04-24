@@ -6,7 +6,6 @@ import MyDropDown from "../components/MyDropDown";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-
 export default function Home() {
   const [zipCode, setZipCode] = useState("");
   const [estateType, setEstateType] = useState("");
@@ -37,7 +36,6 @@ export default function Home() {
       query: { zipCode, estateType, size, price },
     });
   };
-
 
   return (
     <>
@@ -97,9 +95,7 @@ export default function Home() {
                 onChange={handleEstateTypeChange}
               />
             </fieldset>
-            <button  className={styles.button}>
-              Find potential buyers
-            </button>
+            <button className={styles.button}>Find potential buyers</button>
           </form>
         </div>
       </div>
