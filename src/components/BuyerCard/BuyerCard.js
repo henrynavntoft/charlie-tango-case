@@ -26,7 +26,7 @@ export default function BuyerCard({
             <input
               type="checkbox"
               checked={checked}
-              name='buyersomething'
+              name='buyerID'
               value={id}
               onChange={handleCheckboxChange}
             />
