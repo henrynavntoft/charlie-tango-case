@@ -1,10 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-
-export default function Buyers() {
+export default function Contact() {
   const { query } = useRouter();
-  
 
   return (
     <>
@@ -12,10 +10,8 @@ export default function Buyers() {
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
-        <pre>
-        {JSON.stringify(query, null, 2)}
-        </pre>
-            </div>
+        <pre>{JSON.stringify(query, null, 2)}</pre>
+      </div>
     </>
   );
 }
