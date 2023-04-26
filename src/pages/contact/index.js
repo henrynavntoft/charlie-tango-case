@@ -2,14 +2,16 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import MyInput from "@/components/MyInput";
 import styles from "../Home.module.css"
-import { useState } from "react";
-import { estateTypes } from "@/data/estateTypes";
+import { useRef, useState } from "react";
+
 
 export default function Contact() {
+
   const { query } = useRouter();
   const [sellerName, setSellerName] = useState("");
   const [sellerEmail, setSellerEmail] = useState("");
   const [sellerPhone, setSellerPhone] = useState("");
+  const formEl = useRef(null);
 
   const handleSellerNameChange = (event) => {
     setSellerName(event.target.value);
@@ -34,30 +36,29 @@ export default function Contact() {
   //Email:{item.email}
   //Phone: {item.phone}
   //Allow Contact: {item.allowContact ? "Yes" : "No"}
+
   function submitted(e){
      e.preventDefault()
      console.log("PREVENTED");
      const payload ={
-      zipCode: "24009",
-      estateType:"",
-      price:"",
-      size:"",
-      buyer:"",
-      //or
-      //query: query
-      sellerName:"",
-      sellerEmail:"",
-      sellerPhone:"", 
+      zipCode:query.zipCode,
+      estateType:query.estateType,
+      price: query.price,
+      size:query.size,
+      buyerID:query.buyerID,
+      name: sellerName,
+      email: sellerEmail,
+      phone: sellerPhone, 
      }
-     fetch("/dashboard/index.js",{
+     fetch("../api/add-buyer",{
           method:"POST",
-          HEADERS:{
+          headers:{
             "Content-Type":"application/json",
-            apikey : process.env.ANON_KEY,
-            Prefer: "return=representation",
-          }
-     }
-     )
+          },
+          body: JSON.stringify(payload),
+     })
+     .then((res)=> res.json())
+     .then((data) => console.log(data));
   }
   return (
     <>
@@ -65,7 +66,7 @@ export default function Contact() {
         <title>Find   | EDC</title>
       </Head>
       <div className="wrapper">
-      <form method="" onSubmit={submitted} className={styles.form}>
+      <form ref={formEl} onSubmit={submitted} className={styles.form}>
             <fieldset>
             <MyInput
               label="Name"
