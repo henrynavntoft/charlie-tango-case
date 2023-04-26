@@ -15,7 +15,7 @@ export default function Contact() {
 
   const handleSellerNameChange = (event) => {
     setSellerName(event.target.value);
-    console.log(event.target.value);
+  
   };
 
   const handleSellerEmailChange = (event) => {
