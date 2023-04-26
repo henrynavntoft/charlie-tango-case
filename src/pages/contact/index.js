@@ -5,6 +5,7 @@ import styles from "../Home.module.css";
 import { useRef, useState } from "react";
 
 export default function Contact() {
+  const router = useRouter();
   const { query } = useRouter();
   const [sellerName, setSellerName] = useState("");
   const [sellerEmail, setSellerEmail] = useState("");
@@ -13,7 +14,6 @@ export default function Contact() {
 
   const handleSellerNameChange = (event) => {
     setSellerName(event.target.value);
-    console.log(event.target.value);
   };
 
   const handleSellerEmailChange = (event) => {
@@ -43,12 +43,12 @@ export default function Contact() {
       estateType: query.estateType,
       price: query.price,
       size: query.size,
-      buyerID: query.buyerID,
+      buyerID: Array.isArray(query.buyerID) ? query.buyerID : [query.buyerID],
       name: sellerName,
       email: sellerEmail,
       phone: sellerPhone,
     };
-    fetch("../api/add-buyer", {
+    fetch("/api/add-buyer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
