@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import MyInput from "@/components/MyInput";
 import styles from "../Home.module.css"
 import { useState } from "react";
+import { estateTypes } from "@/data/estateTypes";
 
 export default function Contact() {
   const { query } = useRouter();
@@ -22,14 +23,49 @@ export default function Contact() {
   const handleSellerPhoneChange = (event) => {
     setSellerPhone(event.target.value);
   };
-
+  // ID:{item.id},
+  // Created at:{item.created_at} 
+   //Zip Code:{item.zipCode}
+  // Estate Type:{item.estateType}
+  // Price:{item.price}
+  // Size: {item.size} 
+  //Buyer ID:{item.buyerID.join(", ")},
+  //Name: {item.name}
+  //Email:{item.email}
+  //Phone: {item.phone}
+  //Allow Contact: {item.allowContact ? "Yes" : "No"}
+  function submitted(e){
+     e.preventDefault()
+     console.log("PREVENTED");
+     const payload ={
+      zipCode: "24009",
+      estateType:"",
+      price:"",
+      size:"",
+      buyer:"",
+      //or
+      //query: query
+      sellerName:"",
+      sellerEmail:"",
+      sellerPhone:"", 
+     }
+     fetch("/dashboard/index.js",{
+          method:"POST",
+          HEADERS:{
+            "Content-Type":"application/json",
+            apikey : process.env.ANON_KEY,
+            Prefer: "return=representation",
+          }
+     }
+     )
+  }
   return (
     <>
       <Head>
-        <title>Find buyer | EDC</title>
+        <title>Find   | EDC</title>
       </Head>
       <div className="wrapper">
-      <form method="" className={styles.form}>
+      <form method="" onSubmit={submitted} className={styles.form}>
             <fieldset>
             <MyInput
               label="Name"
