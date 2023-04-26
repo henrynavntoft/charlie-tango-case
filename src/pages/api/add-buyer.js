@@ -4,6 +4,8 @@
  * @param res {import('next').NextApiResponse}
  */
 
+//////------POST------///////
+
 export default async function handler(req, res) {
   //res.status(200).json({name:req.body})
   const response = await fetch(
