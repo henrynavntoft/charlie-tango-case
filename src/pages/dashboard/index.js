@@ -1,9 +1,9 @@
-// pages/dashboard.js
 import Head from "next/head";
 import { createClient } from "@supabase/supabase-js";
+import { useState } from "react";
 
 const supabaseUrl = "https://ihjawproqviyqyssqucs.supabase.co";
-const supabaseAnonKey = process.env.SUPABASE_KEY;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 async function fetchData() {
@@ -13,7 +13,23 @@ async function fetchData() {
   return data;
 }
 
-export default function Dashboard({ data }) {
+async function deleteData(id) {
+  const { error } = await supabase
+    .from("charlie-tango-case")
+    .delete()
+    .eq("id", id);
+
+  if (error) throw error;
+}
+
+export default function Dashboard({ initialData }) {
+  const [data, setData] = useState(initialData);
+
+  const handleDelete = async (id) => {
+    await deleteData(id);
+    setData(data.filter((item) => item.id !== id));
+  };
+
   return (
     <>
       <Head>
@@ -31,7 +47,8 @@ export default function Dashboard({ data }) {
               {item.size}, <strong>Buyer ID:</strong> {item.buyerID.join(", ")},{" "}
               <strong>Name:</strong> {item.name}, <strong>Email:</strong>{" "}
               {item.email}, <strong>Phone:</strong> {item.phone},{" "}
-              <strong>Allow Contact:</strong> {item.allowContact ? "Yes" : "No"}
+              <strong>Allow Contact:</strong> {item.allowContact ? "Yes" : "No"}{" "}
+              <button onClick={() => handleDelete(item.id)}>Delete</button>
             </li>
           ))}
         </ul>
@@ -40,11 +57,11 @@ export default function Dashboard({ data }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const data = await fetchData();
   return {
     props: {
-      data,
+      initialData: data,
     },
   };
 }
