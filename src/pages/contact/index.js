@@ -56,7 +56,10 @@ export default function Contact() {
       body: JSON.stringify(payload),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(data);
+        router.push("/thanks");
+      });
   }
   return (
     <>

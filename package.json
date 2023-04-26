@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@fireworks-js/react": "^2.10.3",
     "@supabase/supabase-js": "^2.21.0",
+    "fireworks-js": "^2.10.3",
     "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
