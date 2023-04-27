@@ -1,33 +1,51 @@
 import Head from "next/head";
-import { createClient } from "@supabase/supabase-js";
-import { useState } from "react";
-
-const supabaseUrl = "https://ihjawproqviyqyssqucs.supabase.co";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+import { useState, useEffect } from "react";
 
 async function fetchData() {
-  const { data, error } = await supabase.from("charlie-tango-case").select("*");
+  const response = await fetch("/api/get-seller");
+  const { data, error } = await response.json();
 
   if (error) throw error;
   return data;
 }
 
+// async function to make DELETE request to the API route
 async function deleteData(id) {
-  const { error } = await supabase
-    .from("charlie-tango-case")
-    .delete()
-    .eq("id", id);
+  const response = await fetch(`/api/delete-seller?id=${id}`, {
+    method: "DELETE",
+  });
 
-  if (error) throw error;
+  if (!response.ok) {
+    throw new Error("Error deleting person");
+  }
+
+  return await response.json();
 }
 
-export default function Dashboard({ initialData }) {
-  const [data, setData] = useState(initialData);
+export default function Dashboard() {
+  const [data, setData] = useState([]);
 
+  useEffect(() => {
+    async function fetchAndSetData() {
+      try {
+        const fetchedData = await fetchData();
+        setData(fetchedData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    }
+
+    fetchAndSetData();
+  }, []);
+
+  // handleDelete function that calls deleteData and updates state
   const handleDelete = async (id) => {
-    await deleteData(id);
-    setData(data.filter((item) => item.id !== id));
+    try {
+      await deleteData(id);
+      setData(data.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error("Error deleting person:", error.message);
+    }
   };
 
   return (
@@ -47,7 +65,8 @@ export default function Dashboard({ initialData }) {
               {item.size}, <strong>Buyer ID:</strong> {item.buyerID.join(", ")},{" "}
               <strong>Name:</strong> {item.name}, <strong>Email:</strong>{" "}
               {item.email}, <strong>Phone:</strong> {item.phone},{" "}
-              <strong>Allow Contact:</strong> {item.allowContact ? "Yes" : "No"}{" "}
+              <strong>Allow Contact:</strong> {item.allowContact ? "Yes" : "No"}
+              <br></br>
               <button onClick={() => handleDelete(item.id)}>Delete</button>
             </li>
           ))}
@@ -55,13 +74,4 @@ export default function Dashboard({ initialData }) {
       </div>
     </>
   );
-}
-
-export async function getServerSideProps() {
-  const data = await fetchData();
-  return {
-    props: {
-      initialData: data,
-    },
-  };
 }

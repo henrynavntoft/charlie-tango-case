@@ -10,6 +10,7 @@ export default function Contact() {
   const [sellerName, setSellerName] = useState("");
   const [sellerEmail, setSellerEmail] = useState("");
   const [sellerPhone, setSellerPhone] = useState("");
+  const [allowContact, setAllowContact] = useState(false);
   const formEl = useRef(null);
 
   const handleSellerNameChange = (event) => {
@@ -23,21 +24,15 @@ export default function Contact() {
   const handleSellerPhoneChange = (event) => {
     setSellerPhone(event.target.value);
   };
-  // ID:{item.id},
-  // Created at:{item.created_at}
-  //Zip Code:{item.zipCode}
-  // Estate Type:{item.estateType}
-  // Price:{item.price}
-  // Size: {item.size}
-  //Buyer ID:{item.buyerID.join(", ")},
-  //Name: {item.name}
-  //Email:{item.email}
-  //Phone: {item.phone}
-  //Allow Contact: {item.allowContact ? "Yes" : "No"}
+
+  const handleAllowContactChange = (event) => {
+    setAllowContact(event.target.checked);
+    console.log(event.target.checked);
+  };
 
   function submitted(e) {
     e.preventDefault();
-    console.log("PREVENTED");
+    console.log("DEFAULT PREVENTED");
     const payload = {
       zipCode: query.zipCode,
       estateType: query.estateType,
@@ -47,8 +42,9 @@ export default function Contact() {
       name: sellerName,
       email: sellerEmail,
       phone: sellerPhone,
+      allowContact: allowContact,
     };
-    fetch("/api/add-buyer", {
+    fetch("/api/add-seller", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -103,11 +99,18 @@ export default function Contact() {
               onChange={handleSellerPhoneChange}
               required
             />
-            <label>
-              lorem ipsum
-              <input type="checkbox" name="allowContact" value="" />{" "}
-            </label>
-            <button>submit</button>
+            <MyInput
+              label="Yes please, EDC may contact me with offers and information related to
+          the real esate market."
+              id="allowContact"
+              name="allowContact"
+              type="checkbox"
+              value={allowContact}
+              onChange={handleAllowContactChange}
+              required
+            />
+
+            <button>Submit</button>
           </fieldset>
         </form>
         <pre>{JSON.stringify(query, null, 2)}</pre>
