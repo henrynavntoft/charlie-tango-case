@@ -1,15 +1,19 @@
 import styles from "./DashboardCard.module.css";
+import Mailto from "./Mailto";
+import Tel from "./Tel";
+import Date from "./Date";
+import DateComponent from "./Date";
 
 export default function DashboadCard({
   id,
-  created_at,
+  created_at = { created_at },
   zipCode,
   estateType,
   price,
   size,
   name,
-  email,
-  phone,
+  email = { email },
+  phone = { phone },
   allowContact,
   buyerID,
   onDelete,
@@ -23,7 +27,7 @@ export default function DashboadCard({
         </div>
         <div>
           <p>DATE</p>
-          <p>{created_at}</p>
+          <DateComponent created_at={created_at} />
         </div>
         <div>
           <p>ZIP CODE</p>
@@ -47,11 +51,11 @@ export default function DashboadCard({
         </div>
         <div>
           <p>EMAIL</p>
-          <p>{email}</p>
+          <Mailto email={email} />
         </div>
         <div>
           <p>PHONE</p>
-          <p>{phone}</p>
+          <Tel phone={phone} />
         </div>
         <div>
           <p>ALLOW CONTACT</p>

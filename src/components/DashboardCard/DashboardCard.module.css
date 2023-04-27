@@ -5,7 +5,6 @@
   grid-template-rows: auto 1fr auto auto auto auto; /* Define rows for the grid */
   gap: 1rem; /* Add space between rows */
   height: 100%;
-  margin-bottom: 1rem;
 }
 
 .id {
@@ -23,4 +22,10 @@
 
 .article > div:not(:first-child) {
   border-top: 1px solid #ccc;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1rem;
 }

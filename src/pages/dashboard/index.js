@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import DashboadCard from "@/components/DashboardCard/DashboardCard";
+import styles from "./Dashboard.module.css";
 
 async function fetchData() {
   const response = await fetch("/api/get-seller");
@@ -47,6 +48,10 @@ export default function Dashboard() {
     }
   };
 
+  const sortedData = [...data].sort((a, b) => {
+    return new Date(b.created_at) - new Date(a.created_at);
+  });
+
   return (
     <>
       <Head>
@@ -54,8 +59,8 @@ export default function Dashboard() {
       </Head>
       <div className="wrapper">
         <h1>Dashboard</h1>
-        <div>
-          {data.map((item) => (
+        <div className={styles.grid}>
+          {sortedData.map((item) => (
             <div key={item.id}>
               <DashboadCard
                 id={item.id}
