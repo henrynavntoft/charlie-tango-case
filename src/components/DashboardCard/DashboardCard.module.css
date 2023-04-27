@@ -1,0 +1,26 @@
+.article {
+  background-color: var(--dusty-aqua-light);
+  padding: 1rem;
+  display: grid; /* Change this from flex to grid */
+  grid-template-rows: auto 1fr auto auto auto auto; /* Define rows for the grid */
+  gap: 1rem; /* Add space between rows */
+  height: 100%;
+  margin-bottom: 1rem;
+}
+
+.id {
+  font-size: 0.8rem;
+}
+
+.description {
+  font-size: 1.3rem;
+}
+
+.article div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.article > div:not(:first-child) {
+  border-top: 1px solid #ccc;
+}

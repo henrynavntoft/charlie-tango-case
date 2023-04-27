@@ -107,7 +107,6 @@ export default function Contact() {
               type="checkbox"
               value={allowContact}
               onChange={handleAllowContactChange}
-              required
             />
 
             <button>Submit</button>

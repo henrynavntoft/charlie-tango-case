@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
+import DashboadCard from "@/components/DashboardCard/DashboardCard";
 
 async function fetchData() {
   const response = await fetch("/api/get-seller");
@@ -9,7 +10,6 @@ async function fetchData() {
   return data;
 }
 
-// async function to make DELETE request to the API route
 async function deleteData(id) {
   const response = await fetch(`/api/delete-seller?id=${id}`, {
     method: "DELETE",
@@ -38,7 +38,6 @@ export default function Dashboard() {
     fetchAndSetData();
   }, []);
 
-  // handleDelete function that calls deleteData and updates state
   const handleDelete = async (id) => {
     try {
       await deleteData(id);
@@ -55,22 +54,26 @@ export default function Dashboard() {
       </Head>
       <div className="wrapper">
         <h1>Dashboard</h1>
-        <ul>
+        <div>
           {data.map((item) => (
-            <li key={item.id}>
-              <strong>ID:</strong> {item.id}, <strong>Created at:</strong>{" "}
-              {item.created_at}, <strong>Zip Code:</strong> {item.zipCode},{" "}
-              <strong>Estate Type:</strong> {item.estateType},{" "}
-              <strong>Price:</strong> {item.price}, <strong>Size:</strong>{" "}
-              {item.size}, <strong>Buyer ID:</strong> {item.buyerID.join(", ")},{" "}
-              <strong>Name:</strong> {item.name}, <strong>Email:</strong>{" "}
-              {item.email}, <strong>Phone:</strong> {item.phone},{" "}
-              <strong>Allow Contact:</strong> {item.allowContact ? "Yes" : "No"}
-              <br></br>
-              <button onClick={() => handleDelete(item.id)}>Delete</button>
-            </li>
+            <div key={item.id}>
+              <DashboadCard
+                id={item.id}
+                created_at={item.created_at}
+                zipCode={item.zipCode}
+                estateType={item.estateType}
+                price={item.price}
+                size={item.size}
+                name={item.name}
+                email={item.email}
+                phone={item.phone}
+                allowContact={item.allowContact}
+                buyerID={item.buyerID}
+                onDelete={handleDelete}
+              />
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </>
   );
