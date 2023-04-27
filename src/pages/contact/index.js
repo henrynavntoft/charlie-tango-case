@@ -57,12 +57,41 @@ export default function Contact() {
         router.push("/thanks");
       });
   }
+
+  const handleDeleteBuyer = (index) => {
+    const currentBuyerIDs = Array.isArray(query.buyerID)
+      ? query.buyerID
+      : [query.buyerID];
+    const newBuyerIDList = [...currentBuyerIDs];
+    newBuyerIDList.splice(index, 1);
+
+    const newQuery = { ...router.query, buyerID: newBuyerIDList };
+    router.push({
+      pathname: router.pathname,
+      query: newQuery,
+    });
+  };
+
   return (
     <>
       <Head>
         <title>Find | EDC</title>
       </Head>
       <div className="wrapper">
+        <div>
+          <h3>Potential Buyers</h3>
+          {query.buyerID &&
+            (Array.isArray(query.buyerID)
+              ? query.buyerID
+              : [query.buyerID]
+            ).map((id, index) => (
+              <div key={id}>
+                <span>{id}</span>
+                <button onClick={() => handleDeleteBuyer(index)}>Delete</button>
+              </div>
+            ))}
+        </div>
+
         <form ref={formEl} onSubmit={submitted} className={styles.form}>
           <fieldset>
             <MyInput
@@ -112,7 +141,7 @@ export default function Contact() {
             <button>Submit</button>
           </fieldset>
         </form>
-        <pre>{JSON.stringify(query, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(query, null, 2)}</pre> */}
       </div>
     </>
   );
