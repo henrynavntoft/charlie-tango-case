@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import DashboadCard from "@/components/DashboardCard/DashboardCard";
 import styles from "./Dashboard.module.css";
+import { estateTypes } from "@/data/estateTypes";
 
 async function fetchData() {
   const response = await fetch("/api/get-seller");
@@ -52,33 +53,46 @@ export default function Dashboard() {
     return new Date(b.created_at) - new Date(a.created_at);
   });
 
+  function getEstateTypeName(id) {
+    const estateType = estateTypes.find((type) => type.id === id);
+    return estateType ? estateType.name : "Unknown";
+  }
+
   return (
     <>
       <Head>
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
-        <h1>Dashboard</h1>
-        <div className={styles.grid}>
-          {sortedData.map((item) => (
-            <div key={item.id}>
-              <DashboadCard
-                id={item.id}
-                created_at={item.created_at}
-                zipCode={item.zipCode}
-                estateType={item.estateType}
-                price={item.price}
-                size={item.size}
-                name={item.name}
-                email={item.email}
-                phone={item.phone}
-                allowContact={item.allowContact}
-                buyerID={item.buyerID}
-                onDelete={handleDelete}
-              />
-            </div>
-          ))}
-        </div>
+        <h1 className={styles.headline}>Dashboard</h1>
+        <p>
+          Potential buyers represent a vital segment of any market, as they are
+          the individuals or entities actively seeking products or services to
+          fulfill their needs. These prospective customers are essential to the
+          growth and success of businesses, as they demonstrate interest and
+          willingness to invest in solutions that cater to their specific
+          requirements.
+        </p>
+      </div>
+      <div className={`${styles.grid} ${styles.dashboardWrapper}`}>
+        {sortedData.map((item) => (
+          <div key={item.id}>
+            <DashboadCard
+              id={item.id}
+              created_at={item.created_at}
+              zipCode={item.zipCode}
+              estateType={getEstateTypeName(item.estateType)}
+              price={item.price}
+              size={item.size}
+              name={item.name}
+              email={item.email}
+              phone={item.phone}
+              allowContact={item.allowContact}
+              buyerID={item.buyerID}
+              onDelete={handleDelete}
+            />
+          </div>
+        ))}
       </div>
     </>
   );

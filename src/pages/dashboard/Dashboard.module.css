@@ -3,3 +3,22 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1rem;
 }
+
+.dashboardWrapper {
+  max-width: 800px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: 3rem;
+  font-family: var(--font-sans);
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.headline span {
+  font-family: var(--font-serif);
+}
