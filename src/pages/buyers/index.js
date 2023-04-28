@@ -4,6 +4,7 @@ import styles from "./Buyers.module.css";
 import { useState, useEffect } from "react";
 import BuyerCard from "@/components/BuyerCard/BuyerCard";
 import { estateTypes } from "@/data/estateTypes";
+import Button from "@/components/Button";
 
 export default function Buyers() {
   const { query } = useRouter();
@@ -33,7 +34,15 @@ export default function Buyers() {
       </Head>
       <div className="wrapper">
         <h1 className={styles.headline}>Potential buyers</h1>
-        <button onClick={() => router.back()}>Back</button>
+        <p>
+          Potential buyers represent a vital segment of any market, as they are
+          the individuals or entities actively seeking products or services to
+          fulfill their needs. These prospective customers are essential to the
+          growth and success of businesses, as they demonstrate interest and
+          willingness to invest in solutions that cater to their specific
+          requirements.
+        </p>
+        {/* <button onClick={() => router.back()}>Back</button> */}
         <form action="../contact" method="GET">
           <div className={styles.grid}>
             {buyers.map((buyer) => (
@@ -54,15 +63,16 @@ export default function Buyers() {
           <input type="hidden" name="price" value={query.price} />
           <input type="hidden" name="estateType" value={query.estateType} />
 
-          <button>Submit</button>
+          <Button type="submit">Submit</Button>
         </form>
         <br></br>
+        {/* <br></br>
         <div className={styles.content}>
           <h2>Query params:</h2>
           <pre>
             <code>{JSON.stringify(query, null, 2)}</code>
           </pre>
-        </div>
+        </div> */}
       </div>
     </>
   );

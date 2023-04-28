@@ -1,8 +1,8 @@
 import styles from "./DashboardCard.module.css";
 import Mailto from "./Mailto";
 import Tel from "./Tel";
-import Date from "./Date";
 import DateComponent from "./Date";
+import Button from "@/components/Button";
 
 export default function DashboadCard({
   id,
@@ -66,7 +66,7 @@ export default function DashboadCard({
           <p>{buyerID.join(", ")}</p>
         </div>
         {/* Add the delete button */}
-        <button onClick={() => onDelete(id)}>Delete</button>
+        <Button onClick={() => onDelete(id)}>Delete</Button>
       </article>
     </>
   );

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import MyInput from "@/components/MyInput";
 import styles from "../Home.module.css";
 import { useRef, useState } from "react";
+import Button from "@/components/Button";
 
 export default function Contact() {
   const router = useRouter();
@@ -77,22 +78,21 @@ export default function Contact() {
       <Head>
         <title>Find | EDC</title>
       </Head>
+      <h1 className={styles.headline}>Contact Potential Buyers</h1>
       <div className="wrapper">
-        <div>
-          <h3>Potential Buyers</h3>
-          {query.buyerID &&
-            (Array.isArray(query.buyerID)
-              ? query.buyerID
-              : [query.buyerID]
-            ).map((id, index) => (
-              <div key={id}>
-                <span>{id}</span>
-                <button onClick={() => handleDeleteBuyer(index)}>Delete</button>
-              </div>
-            ))}
-        </div>
-
         <form ref={formEl} onSubmit={submitted} className={styles.form}>
+          <div className={styles.potentialBuyersWrapper}>
+            {query.buyerID &&
+              (Array.isArray(query.buyerID)
+                ? query.buyerID
+                : [query.buyerID]
+              ).map((id, index) => (
+                <div key={id}>
+                  <span>ID: {id}</span>
+                  <button onClick={() => handleDeleteBuyer(index)}>X</button>
+                </div>
+              ))}
+          </div>
           <fieldset>
             <MyInput
               label="Name"
@@ -138,7 +138,7 @@ export default function Contact() {
               onChange={handleAllowContactChange}
             />
 
-            <button>Submit</button>
+            <Button type="submit"> Submit</Button>
           </fieldset>
         </form>
         {/* <pre>{JSON.stringify(query, null, 2)}</pre> */}

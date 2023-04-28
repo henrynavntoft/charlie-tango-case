@@ -5,6 +5,7 @@ import MyInput from "../components/MyInput";
 import MyDropDown from "../components/MyDropDown";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Button from "@/components/Button";
 
 export default function Home() {
   const [zipCode, setZipCode] = useState("");
@@ -95,7 +96,8 @@ export default function Home() {
                 onChange={handleEstateTypeChange}
               />
             </fieldset>
-            <button className={styles.button}>Find potential buyers</button>
+            {/* <button className={styles.button}>Find potential buyers</button> */}
+            <Button type="submit">See potential buyers</Button>
           </form>
         </div>
       </div>

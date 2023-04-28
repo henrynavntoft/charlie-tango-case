@@ -20,13 +20,13 @@ export default function BuyerCard({
       <article className={styles.article}>
         <div className={styles.idContainer}>
           <p className={styles.id}>
-            id<span>{id}</span>
+            ID: <span>{id}</span>
           </p>
           <label className={styles.checkboxLabel}>
             <input
               type="checkbox"
               checked={checked}
-              name='buyerID'
+              name="buyerID"
               value={id}
               onChange={handleCheckboxChange}
             />
