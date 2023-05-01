@@ -17,7 +17,7 @@ export default function MyInput({
     <label
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(1fr, 1fr)",
+        gridTemplateColumns: "repeat(2,1fr)",
       }}
       htmlFor={id}
       className={styles.label}
