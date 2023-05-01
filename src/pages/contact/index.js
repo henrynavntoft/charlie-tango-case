@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import MyInput from "@/components/MyInput";
+import MyInputCheckbox from "../../components/MyInputCheckbox";
 import styles from "../Home.module.css";
 import { useRef, useState } from "react";
 import Button from "@/components/Button";
@@ -97,7 +98,8 @@ export default function Contact() {
           </div>
           <fieldset>
             <MyInput
-              label="Name"
+              label="Full Name"
+              description="Please enter your full name"
               id="sellername"
               name="sellername"
               type="text"
@@ -109,6 +111,7 @@ export default function Contact() {
             />
             <MyInput
               label="Email"
+              description="Please enter your email address"
               id="email"
               name="email"
               type="email"
@@ -121,6 +124,7 @@ export default function Contact() {
 
             <MyInput
               label="Phone"
+              description="Please enter your phone number"
               id="phone"
               name="phone"
               type="tel"
@@ -131,7 +135,7 @@ export default function Contact() {
               required
             />
 
-            <MyInput
+            <MyInputCheckbox
               label="Yes please, EDC may contact me."
               id="allowContact"
               name="allowContact"

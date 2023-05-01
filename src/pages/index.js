@@ -56,6 +56,7 @@ export default function Home() {
             <fieldset>
               <MyInput
                 label="Price"
+                description="Please enter the amount in DKK"
                 id="price"
                 name="price"
                 type="number"
@@ -68,6 +69,7 @@ export default function Home() {
               />
               <MyInput
                 label="Size"
+                description="Please enter size in m2"
                 id="size"
                 name="size"
                 type="number"
@@ -80,6 +82,7 @@ export default function Home() {
               />
               <MyInput
                 label="Zip Code"
+                description="Please enter Zip Code"
                 id="zipcode"
                 name="zipcode"
                 type="number"

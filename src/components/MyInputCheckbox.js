@@ -14,12 +14,16 @@ export default function MyInput({
   description,
 }) {
   return (
-    <label htmlFor={id} className={styles.label}>
+    <label
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(1fr, 1fr)",
+      }}
+      htmlFor={id}
+      className={styles.label}
+    >
       {label}
-      <br />
-      <span>{description}</span>
-      <br />
-      <div style={{ display: "inline-flex", alignItems: "center" }}>
+      <div>
         <input
           id={id}
           name={name}
@@ -30,7 +34,6 @@ export default function MyInput({
           value={value}
           onChange={onChange}
         />
-        {suffix && <span style={{ marginLeft: "5px" }}>{suffix}</span>}
       </div>
     </label>
   );
