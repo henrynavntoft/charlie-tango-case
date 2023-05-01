@@ -23,3 +23,9 @@
 .article > div:not(:first-child) {
   border-top: 1px solid #ccc;
 }
+
+.article > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

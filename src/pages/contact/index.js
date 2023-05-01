@@ -78,7 +78,9 @@ export default function Contact() {
       <Head>
         <title>Find | EDC</title>
       </Head>
-      <h1 className={styles.headline}>Contact Potential Buyers</h1>
+      <h1 className={styles.headline}>
+        Contact <span> potential </span> buyers
+      </h1>
       <div className="wrapper">
         <form ref={formEl} onSubmit={submitted} className={styles.form}>
           <div className={styles.potentialBuyersWrapper}>
@@ -128,9 +130,9 @@ export default function Contact() {
               onChange={handleSellerPhoneChange}
               required
             />
+
             <MyInput
-              label="Yes please, EDC may contact me with offers and information related to
-          the real esate market."
+              label="Yes please, EDC may contact me."
               id="allowContact"
               name="allowContact"
               type="checkbox"

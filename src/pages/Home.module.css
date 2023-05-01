@@ -45,9 +45,13 @@
 .form input {
   padding: 0.5rem;
   width: 50%;
+  min-width: 10rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.2rem;
 }
 
-.button {
+/* .button {
   cursor: pointer;
   padding: 0.5rem 2rem;
   margin-top: 2rem;
@@ -59,7 +63,7 @@
 
 .button:hover {
   background: var(--hover);
-}
+} */
 
 .dropdown {
   font-size: 0.8rem;
@@ -72,4 +76,13 @@
   flex-direction: column;
   gap: 1rem;
   border-bottom: 1px;
+}
+
+.form-control {
+  padding: 0.5rem;
+  width: 20%;
+  min-width: 10rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.2rem;
 }

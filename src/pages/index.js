@@ -61,6 +61,7 @@ export default function Home() {
                 type="number"
                 inputMode="numeric"
                 enterKeyHint="next"
+                suffix="DKK"
                 value={price}
                 onChange={handlePriceChange}
                 required
@@ -72,6 +73,7 @@ export default function Home() {
                 type="number"
                 inputMode="decimal"
                 enterKeyHint="next"
+                suffix="m2"
                 value={size}
                 onChange={handleSizeChange}
                 required
@@ -96,8 +98,7 @@ export default function Home() {
                 onChange={handleEstateTypeChange}
               />
             </fieldset>
-            {/* <button className={styles.button}>Find potential buyers</button> */}
-            <Button type="submit">See potential buyers</Button>
+            <Button type="submit">See Potential Buyers</Button>
           </form>
         </div>
       </div>
