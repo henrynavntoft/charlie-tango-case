@@ -1,16 +1,25 @@
 import { Fireworks } from "@fireworks-js/react";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import styles from "../Home.module.css";
 
 export default function App() {
   const router = useRouter();
+  const [timeLeft, setTimeLeft] = useState(7);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push("/");
-    }, 5000);
+    }, 7000);
 
-    return () => clearTimeout(timer);
+    const countdown = setInterval(() => {
+      setTimeLeft((prevTime) => prevTime - 1);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(countdown);
+    };
   }, [router]);
 
   return (
@@ -41,7 +50,11 @@ export default function App() {
           zIndex: 10,
         }}
       >
-        <h1>Thank you!</h1>
+        <h1 className={styles.headline}>
+          {" "}
+          <span>Thank you! </span>
+        </h1>
+        <p>You will be redirected in {timeLeft}&nbsp;seconds.</p>
       </div>
     </div>
   );
