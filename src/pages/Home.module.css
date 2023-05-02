@@ -1,7 +1,7 @@
 .headline {
-  font-size: 3rem;
+  font-size: 4rem;
   font-family: var(--font-sans);
-  text-align: center;
+  text-align: left;
   font-weight: 400;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -11,10 +11,20 @@
   font-family: var(--font-serif);
 }
 
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
 .content {
-  padding: 1rem;
-  background-color: var(--white);
-  margin-bottom: 1rem;
+  max-width: 600px;
+}
+
+.content p {
+  max-width: 500px;
 }
 
 .content :first-child {
@@ -25,8 +35,11 @@
 }
 
 .form {
-  background-color: var(--dusty-aqua-light);
-  padding: 1rem;
+  background-color: var(--white);
+  padding: 2rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 5px;
+  width: 400px;
 }
 
 .label {
@@ -44,26 +57,33 @@
 
 .form input {
   padding: 0.5rem;
-  width: 50%;
-  min-width: 10rem;
+  margin: 0.3rem 0;
+  width: 15rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 0.2rem;
 }
 
-/* .button {
-  cursor: pointer;
-  padding: 0.5rem 2rem;
-  margin-top: 2rem;
-  background: var(--blue);
-  color: var(--white);
-  border-radius: 0.2rem;
-  font-size: 1rem;
+.form input:valid {
+  border-color: green;
 }
 
-.button:hover {
-  background: var(--hover);
-} */
+.form input:focus {
+  outline: var(--blue) solid 1px;
+}
+
+.form select:focus {
+  outline: var(--blue) solid 1px;
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+.label span {
+  color: var(--dusty-blue);
+}
 
 .dropdown {
   font-size: 0.8rem;

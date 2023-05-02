@@ -76,9 +76,9 @@ export function generateBuyerProfile({
   } with a minimum size of ${
     result.minSize
   } m2 and a maximum price of ${priceFormatter.format(
-    result.maxPrice
-  )} ${faker.lorem.sentence()}`;
+    result.maxPrice)}`;
 
+    // ${faker.lorem.sentence()}
   return result;
 }
 

@@ -36,19 +36,19 @@ export default function BuyerCard({
 
         <p className={styles.description}>{description}</p>
         <div>
-          <p>ESTATE TYPE</p>
+          <p>Estate type</p>
           <p>{estateType}</p>
         </div>
         <div>
-          <p>MAX PRICE</p>
+          <p>Max price</p>
           <p>{price}</p>
         </div>
         <div>
-          <p>MIN SIZE</p>
+          <p>Min size</p>
           <p>{size}</p>
         </div>
         <div>
-          <p>TAKEOVER DATE</p>
+          <p>Takeover Date</p>
           <p>{date}</p>
         </div>
       </article>

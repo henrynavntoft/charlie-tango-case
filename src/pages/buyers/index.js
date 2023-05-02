@@ -6,6 +6,14 @@ import BuyerCard from "@/components/BuyerCard/BuyerCard";
 import { estateTypes } from "@/data/estateTypes";
 import Button from "@/components/Button";
 
+// const CustomButton = styles(Button)`
+//   background-color: blue;
+//   color: white;
+//   font-size: 1.2rem;
+//   padding: 10px 20px;
+// `;
+
+
 export default function Buyers() {
   const { query } = useRouter();
   const router = useRouter();
@@ -32,18 +40,21 @@ export default function Buyers() {
       <Head>
         <title>Find buyer | EDC</title>
       </Head>
-      <div className="wrapper">
-        <h1 className={styles.headline}>Potential buyers</h1>
-        <p>
+      <div className={`${styles.buyergrid} wrapper`}>
+       <aside className={styles.aside}>
+         <h1 className={styles.headline}>Potential buyers</h1>
+         <p>
           Potential buyers represent a vital segment of any market, as they are
           the individuals or entities actively seeking products or services to
           fulfill their needs. These prospective customers are essential to the
           growth and success of businesses, as they demonstrate interest and
           willingness to invest in solutions that cater to their specific
           requirements.
-        </p>
+         </p>
+        </aside>
+        <article>
         {/* <button onClick={() => router.back()}>Back</button> */}
-        <form action="../contact" method="GET">
+        <form action="../contact" method="GET" className={styles.form}>
           <div className={styles.grid}>
             {buyers.map((buyer) => (
               <BuyerCard
@@ -62,8 +73,8 @@ export default function Buyers() {
           <input type="hidden" name="size" value={query.size} />
           <input type="hidden" name="price" value={query.price} />
           <input type="hidden" name="estateType" value={query.estateType} />
+          <Button type="submit" >Submit</Button>
 
-          <Button type="submit">Submit</Button>
         </form>
         <br></br>
         {/* <br></br>
@@ -73,6 +84,7 @@ export default function Buyers() {
             <code>{JSON.stringify(query, null, 2)}</code>
           </pre>
         </div> */}
+        </article>
       </div>
     </>
   );
