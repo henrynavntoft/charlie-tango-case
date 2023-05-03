@@ -3,6 +3,7 @@ import Mailto from "./Mailto";
 import Tel from "./Tel";
 import DateComponent from "./Date";
 import Button from "../Button";
+import { useState } from "react";
 export default function DashboadCard({
   id,
   created_at = { created_at },
@@ -14,9 +15,18 @@ export default function DashboadCard({
   email = { email },
   phone = { phone },
   allowContact,
-  buyerID,
+  buyerID= [],
   onDelete,
 }) {
+  const [showBuyers, setShowBuyers] = useState(false);
+  const handleShowBuyers = () => {
+    setShowBuyers(true);
+  };
+  const handleCloseBuyers = () => {
+    setShowBuyers(false);
+  };
+  const buyersList = ["buyerID1", "buyerID2", "buyerID3"]; // replace with actual list of buyers
+
   return (
     <>
       <article className={styles.article}>
@@ -35,14 +45,25 @@ export default function DashboadCard({
             <Tel phone={phone} />
           </section>
           <section className={styles.buttons}>
-           {/* <div>
-             <p>{allowContact ? "Yes" : "No"}</p>
-           </div> */}
-           <Button>Contact</Button>
-           {/* <div>
-             <p>{buyerID.join(", ")}</p>
-           </div> */}
-           <Button>See Buyers</Button>
+           
+           <Button >Contact</Button>
+           
+           <Button onClick={handleShowBuyers}>See Buyers</Button>
+           {showBuyers && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <span className={styles.close} onClick={handleCloseBuyers}>
+              &times;
+            </span>
+            <h2>List of Buyers</h2>
+            <ul>
+            {buyerID.map((buyer, index) => (
+                <li key={index}>{buyer}</li>
+              ))}
+            </ul>
+          </div>
+        </div>)}
+           
           </section>
         </section>
         <section className={styles.secondhalf}>
@@ -119,6 +140,7 @@ export default function DashboadCard({
         </div>
         </section>
       </article>
+     
     </>
   );
 }
