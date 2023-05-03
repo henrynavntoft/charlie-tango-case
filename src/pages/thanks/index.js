@@ -50,9 +50,9 @@ export default function App() {
           zIndex: 10,
         }}
       >
-        <h1 className={styles.headline}>
+        <h1 className={styles.headline2}>
           {" "}
-          <span>Thank you! </span>
+          <span>Thank you!</span>
         </h1>
         <p>You will be redirected in {timeLeft}&nbsp;seconds.</p>
       </div>

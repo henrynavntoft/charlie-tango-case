@@ -80,78 +80,78 @@ export default function Contact() {
         <title>Find | EDC</title>
       </Head>
       <div className="wrapper">
-       <div className={styles.flexbox}>
-        <section className={styles.content}>
-         <h1 className={styles.headline}>
-          Contact <span> potential </span> buyers
-         </h1>
-        </section>
-        <form ref={formEl} onSubmit={submitted} className={styles.form}>
-          <div className={styles.potentialBuyersWrapper}>
-            {query.buyerID &&
-              (Array.isArray(query.buyerID)
-                ? query.buyerID
-                : [query.buyerID]
-              ).map((id, index) => (
-                <div key={id}>
-                  <span>ID: {id}</span>
-                  <button onClick={() => handleDeleteBuyer(index)}>X</button>
-                </div>
-              ))}
-          </div>
-          <fieldset>
-            <MyInput
-              label="Full Name"
-              description="Please enter your full name"
-              id="sellername"
-              name="sellername"
-              type="text"
-              inputMode="text"
-              enterKeyHint="next"
-              value={sellerName}
-              onChange={handleSellerNameChange}
-              required
-            />
-            <MyInput
-              label="Email"
-              description="Please enter your email address"
-              id="email"
-              name="email"
-              type="email"
-              inputMode="text"
-              enterKeyHint="next"
-              value={sellerEmail}
-              onChange={handleSellerEmailChange}
-              required
-            />
+        <div className={styles.flexbox}>
+          <section className={styles.content}>
+            <h1 className={styles.headline}>
+              Contact <span> potential </span> buyers
+            </h1>
+          </section>
+          <form ref={formEl} onSubmit={submitted} className={styles.form}>
+            <div className={styles.potentialBuyersWrapper}>
+              {query.buyerID &&
+                (Array.isArray(query.buyerID)
+                  ? query.buyerID
+                  : [query.buyerID]
+                ).map((id, index) => (
+                  <div key={id}>
+                    <span>ID: {id}</span>
+                    <button onClick={() => handleDeleteBuyer(index)}>X</button>
+                  </div>
+                ))}
+            </div>
+            <fieldset>
+              <MyInput
+                label="Full Name"
+                description="Please enter your full name"
+                id="sellername"
+                name="sellername"
+                type="text"
+                inputMode="text"
+                enterKeyHint="next"
+                value={sellerName}
+                onChange={handleSellerNameChange}
+                required
+              />
+              <MyInput
+                label="Email"
+                description="Please enter your email address"
+                id="email"
+                name="email"
+                type="email"
+                inputMode="text"
+                enterKeyHint="next"
+                value={sellerEmail}
+                onChange={handleSellerEmailChange}
+                required
+              />
 
-            <MyInput
-              label="Phone"
-              description="Please enter your phone number"
-              id="phone"
-              name="phone"
-              type="tel"
-              inputMode="numeric"
-              enterKeyHint="next"
-              value={sellerPhone}
-              onChange={handleSellerPhoneChange}
-              required
-            />
+              <MyInput
+                label="Phone"
+                description="Please enter your phone number"
+                id="phone"
+                name="phone"
+                type="tel"
+                inputMode="numeric"
+                enterKeyHint="next"
+                value={sellerPhone}
+                onChange={handleSellerPhoneChange}
+                required
+              />
 
-            <MyInputCheckbox
-              label="Yes please, EDC may contact me."
-              id="allowContact"
-              name="allowContact"
-              type="checkbox"
-              value={allowContact}
-              onChange={handleAllowContactChange}
-            />
+              <MyInputCheckbox
+                label="Yes please, EDC may contact me."
+                id="allowContact"
+                name="allowContact"
+                type="checkbox"
+                value={allowContact}
+                onChange={handleAllowContactChange}
+              />
 
-            <Button type="submit"> Submit</Button>
-          </fieldset>
-        </form>
-        {/* <pre>{JSON.stringify(query, null, 2)}</pre> */}
-      </div>
+              <Button type="submit"> Submit</Button>
+            </fieldset>
+          </form>
+          {/* <pre>{JSON.stringify(query, null, 2)}</pre> */}
+        </div>
       </div>
     </>
   );

@@ -15,26 +15,26 @@ export default function MyInput({
 }) {
   return (
     <label
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(2,1fr)",
-      }}
       htmlFor={id}
+      style={{
+        display: "flex",
+        gap: "2rem",
+        marginBottom: "2rem",
+      }}
       className={styles.label}
     >
       {label}
-      <div>
-        <input
-          id={id}
-          name={name}
-          type={type}
-          inputMode={inputMode}
-          enterKeyHint={enterKeyHint}
-          required={required}
-          value={value}
-          onChange={onChange}
-        />
-      </div>
+
+      <input
+        id={id}
+        name={name}
+        type={type}
+        inputMode={inputMode}
+        enterKeyHint={enterKeyHint}
+        required={required}
+        value={value}
+        onChange={onChange}
+      />
     </label>
   );
 }

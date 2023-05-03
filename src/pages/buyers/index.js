@@ -63,7 +63,7 @@ export default function Buyers() {
           <input type="hidden" name="price" value={query.price} />
           <input type="hidden" name="estateType" value={query.estateType} />
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Next</Button>
         </form>
         <br></br>
         {/* <br></br>
