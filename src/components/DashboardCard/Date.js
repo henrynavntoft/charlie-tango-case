@@ -1,6 +1,3 @@
-import styles from "./Date.module.css";
-
-
 export default function DateComponent({ created_at }) {
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     year: "numeric",

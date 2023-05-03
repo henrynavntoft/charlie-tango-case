@@ -29,8 +29,8 @@ export default function DashboadCard({
 
         <section className={styles.firsthalf}>
           <h3 className={styles.fullname}>{name}</h3>
-            <DateComponent created_at={created_at}/>
           <section className={styles.sellerInfo}>
+            <DateComponent created_at={created_at}/>
             <Mailto email={email} />
             <Tel phone={phone} />
           </section>

@@ -65,14 +65,14 @@ export default function Dashboard() {
       </Head>
       <div className="wrapper">
         <h1 className={styles.headline}>Dashboard</h1>
-        <p>
+        {/* <p>
           Potential buyers represent a vital segment of any market, as they are
           the individuals or entities actively seeking products or services to
           fulfill their needs. These prospective customers are essential to the
           growth and success of businesses, as they demonstrate interest and
           willingness to invest in solutions that cater to their specific
           requirements.
-        </p>
+        </p> */}
 
       <div className={`${styles.grid}`}>
         {sortedData.map((item) => (
