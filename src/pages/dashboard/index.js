@@ -73,8 +73,8 @@ export default function Dashboard() {
           willingness to invest in solutions that cater to their specific
           requirements.
         </p>
-      </div>
-      <div className={`${styles.grid} ${styles.dashboardWrapper}`}>
+
+      <div className={`${styles.grid}`}>
         {sortedData.map((item) => (
           <div key={item.id}>
             <DashboadCard
@@ -93,6 +93,7 @@ export default function Dashboard() {
             />
           </div>
         ))}
+      </div>
       </div>
     </>
   );

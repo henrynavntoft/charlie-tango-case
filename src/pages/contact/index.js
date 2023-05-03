@@ -79,10 +79,13 @@ export default function Contact() {
       <Head>
         <title>Find | EDC</title>
       </Head>
-      <h1 className={styles.headline}>
-        Contact <span> potential </span> buyers
-      </h1>
       <div className="wrapper">
+       <div className={styles.flexbox}>
+        <section className={styles.content}>
+         <h1 className={styles.headline}>
+          Contact <span> potential </span> buyers
+         </h1>
+        </section>
         <form ref={formEl} onSubmit={submitted} className={styles.form}>
           <div className={styles.potentialBuyersWrapper}>
             {query.buyerID &&
@@ -148,6 +151,7 @@ export default function Contact() {
           </fieldset>
         </form>
         {/* <pre>{JSON.stringify(query, null, 2)}</pre> */}
+      </div>
       </div>
     </>
   );

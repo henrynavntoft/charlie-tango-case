@@ -1,7 +1,6 @@
 .button {
   cursor: pointer;
   padding: 0.7rem 1rem;
-  margin-top: 2rem;
   background: var(--blue);
   color: var(--white);
   border-radius: 2rem;

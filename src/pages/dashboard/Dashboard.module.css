@@ -1,13 +1,11 @@
+.main {
+  background-color: pink;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1rem;
-}
-
-.dashboardWrapper {
-  max-width: 800px;
-  padding: 0 1rem;
-  margin: 0 auto;
 }
 
 .headline {

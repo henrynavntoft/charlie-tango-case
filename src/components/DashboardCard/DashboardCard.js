@@ -20,32 +20,34 @@ export default function DashboadCard({
   return (
     <>
       <article className={styles.article}>
-        <section>
-          <div>
-            <p>{id}</p>
-          </div>
-        </section>
-
-        <section>
+        <section className={styles.id}>
+            <p>ID: {id}</p>
           <button className={styles.deleteSeller} onClick={() => onDelete(id)}>
             X
           </button>
         </section>
 
-        <section className={styles.sellerInfo}>
-          <div>
-            <h3>{name}</h3>
-          </div>
-
-          <div>
+        <section className={styles.firsthalf}>
+          <h3 className={styles.fullname}>{name}</h3>
+            <DateComponent created_at={created_at}/>
+          <section className={styles.sellerInfo}>
             <Mailto email={email} />
-          </div>
-
-          <div>
             <Tel phone={phone} />
-          </div>
-
-          <div className={styles.propertyInfo}>
+          </section>
+          <section className={styles.buttons}>
+           {/* <div>
+             <p>{allowContact ? "Yes" : "No"}</p>
+           </div> */}
+           <Button>Contact</Button>
+           {/* <div>
+             <p>{buyerID.join(", ")}</p>
+           </div> */}
+           <Button>See Buyers</Button>
+          </section>
+        </section>
+        <section className={styles.secondhalf}>
+        <div className={styles.propertyInfo}>
+          <div>
             <svg
               width="24"
               height="24"
@@ -57,10 +59,13 @@ export default function DashboadCard({
                 fill="currentColor"
               />
             </svg>
+            <p>Estate type</p>
+            </div>
             <p>{estateType}</p>
-          </div>
+        </div>
 
-          <div className={styles.propertyInfo}>
+        <div className={styles.propertyInfo}>
+          <div>
             <svg
               width="24"
               height="24"
@@ -72,10 +77,13 @@ export default function DashboadCard({
                 fill="currentColor"
               />
             </svg>
+            <p>Zip Code</p>
+            </div>
             <p>{zipCode}</p>
-          </div>
+        </div>
 
-          <div className={styles.propertyInfo}>
+        <div className={styles.propertyInfo}>
+          <div>
             <svg
               width="24"
               height="24"
@@ -87,11 +95,13 @@ export default function DashboadCard({
                 fill="currentColor"
               />
             </svg>
-
+            <p>Price</p>
+            </div>
             <p>{price}</p>
-          </div>
+        </div>
 
-          <div className={styles.propertyInfo}>
+        <div className={styles.propertyInfo}>
+          <div>
             <svg
               width="24"
               height="24"
@@ -103,26 +113,10 @@ export default function DashboadCard({
                 d="M397.2 128v362c0 5.6-4.5 10.2-10.2 10.2H25c-5.6 0-10.2-4.6-10.2-10.2V128c0-5.7 4.6-10.2 10.2-10.2h223.9c5.7 0 10.2 4.6 10.2 10.2s-4.6 10.2-10.2 10.2h-32.6V331c-.2 5.5-4.7 9.8-10.2 9.8-5.5 0-10-4.4-10.2-9.8v-54.8H162c-5.6 0-10.2-4.6-10.2-10.2s4.6-10.2 10.2-10.2h33.8V138.2H35.2v117.6h31.6c5.7 0 10.2 4.6 10.2 10.2s-4.6 10.2-10.2 10.2H35.2v203.6h160.5V431c0-5.7 4.6-10.2 10.2-10.2 5.7 0 10.2 4.6 10.2 10.2v48.8h160.5V276.2H285c-5.6 0-10.2-4.6-10.2-10.2s4.6-10.2 10.2-10.2h91.8V138.2h-33.6c-5.6 0-10.2-4.6-10.2-10.2s4.6-10.2 10.2-10.2H387c5.7 0 10.2 4.5 10.2 10.2zM195.8 331v-.4.4zm20.4 0v-.4.4zM396.7 22.5c0-5.7-4.6-10.2-10.2-10.2s-10.2 4.6-10.2 10.2c0 .4 0 .8.1 1.1v10.6H35.7V22.5c0-5.7-4.6-10.2-10.2-10.2s-10.2 4.6-10.2 10.2c0 .4 0 .8.1 1.1v41.6c0 .4-.1.7-.1 1.1 0 5.6 4.6 10.2 10.2 10.2s10.2-4.6 10.2-10.2V54.7h340.6v10.6c0 .4-.1.7-.1 1.1 0 5.6 4.6 10.2 10.2 10.2 5.7 0 10.2-4.6 10.2-10.2l.1-43.9zm90.9 456.8h-11.7V138.7h10.6c.4 0 .7.1 1.1.1 5.6 0 10.2-4.6 10.2-10.2 0-5.7-4.6-10.2-10.2-10.2h-43.8c-5.7 0-10.2 4.6-10.2 10.2s4.6 10.2 10.2 10.2c.4 0 .8 0 1.1-.1h10.6v340.6h-11.7c-5.7 0-10.2 4.6-10.2 10.2s4.6 10.2 10.2 10.2c.4 0 .8 0 1.1-.1h41.6c.4 0 .7.1 1.1.1 5.6 0 10.2-4.6 10.2-10.2s-4.6-10.2-10.2-10.2z"
               />
             </svg>
+            <p>Size</p>
+            </div>
             <p>{size}</p>
-          </div>
-
-          <div>
-            <DateComponent created_at={created_at} />
-          </div>
-        </section>
-
-        <section>
-          {/* <div>
-            <p>{allowContact ? "Yes" : "No"}</p>
-          </div> */}
-          <Button>Contact</Button>
-        </section>
-
-        <section>
-          {/* <div>
-            <p>{buyerID.join(", ")}</p>
-          </div> */}
-          <Button>Buyers</Button>
+        </div>
         </section>
       </article>
     </>
