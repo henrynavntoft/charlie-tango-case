@@ -25,7 +25,7 @@ export default function DashboadCard({
   const handleCloseBuyers = () => {
     setShowBuyers(false);
   };
-  const buyersList = ["buyerID1", "buyerID2", "buyerID3"]; // replace with actual list of buyers
+  
 
   return (
     <>

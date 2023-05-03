@@ -34,22 +34,14 @@ export default function Buyers() {
       </Head>
       <div className="wrapper">
         <h1 className={styles.headline}>Potential buyers</h1>
-        {/* <p>
-          Potential buyers represent a vital segment of any market, as they are
-          the individuals or entities actively seeking products or services to
-          fulfill their needs. These prospective customers are essential to the
-          growth and success of businesses, as they demonstrate interest and
-          willingness to invest in solutions that cater to their specific
-          requirements.
-        </p> */}
-        {/* <button onClick={() => router.back()}>Back</button> */}
+        
+       
         <form action="../contact" method="GET">
           <div className={styles.grid}>
             {buyers.map((buyer) => (
               <BuyerCard
                 key={buyer.id}
                 id={buyer.id}
-                // onChange={handleChange}
                 description={buyer.description}
                 estateType={getEstateTypeName(buyer.estateType)}
                 price={buyer.maxPrice}
@@ -66,13 +58,7 @@ export default function Buyers() {
           <Button type="submit">Next</Button>
         </form>
         <br></br>
-        {/* <br></br>
-        <div className={styles.content}>
-          <h2>Query params:</h2>
-          <pre>
-            <code>{JSON.stringify(query, null, 2)}</code>
-          </pre>
-        </div> */}
+        
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import styles from "./Button.module.css"; // You can create a separate CSS file to style your button
+import styles from "./Button.module.css"; 
 
 const Button = ({
   onClick,

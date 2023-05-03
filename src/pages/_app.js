@@ -36,7 +36,7 @@ function App({ Component, pageProps }) {
 
   return (
     <>
-      {/* {isLoading && <Preloader />} */}
+      
       <Header />
       <main>
         <Component {...pageProps} />

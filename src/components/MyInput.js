@@ -30,7 +30,7 @@ export default function MyInput({
           value={value}
           onChange={onChange}
         />
-        {/* {suffix && <span style={{ marginLeft: "5px" }}>{suffix}</span>} */}
+      
       </div>
     </label>
   );

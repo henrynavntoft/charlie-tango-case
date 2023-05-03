@@ -150,7 +150,6 @@ export default function Contact() {
               <Button type="submit"> Submit</Button>
             </fieldset>
           </form>
-          {/* <pre>{JSON.stringify(query, null, 2)}</pre> */}
         </div>
       </div>
     </>

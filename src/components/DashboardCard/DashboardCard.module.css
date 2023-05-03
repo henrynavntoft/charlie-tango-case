@@ -1,14 +1,6 @@
 .article {
-  /* background-color: var(--dusty-aqua-light);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding: 1rem;
-  height: 100%;
-  align-items: center;
-  justify-content: center; */
-  /* background-color: var(--dusty-aqua-light); */
-  display: grid; /* Change this from flex to grid */
-  grid-template-rows: auto 1fr auto auto auto auto; /* Define rows for the grid */
+  grid-template-rows: auto 1fr auto auto auto auto;
   height: 100%;
   background-color: var(--white);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
