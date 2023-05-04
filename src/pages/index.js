@@ -44,15 +44,15 @@ export default function Home() {
         <title>Find buyer | EDC</title>
       </Head>
       <div className="wrapper">
-       <div className={styles.flexbox}>
-         <section className={styles.content}>
-           <h1 className={styles.headline}>
-            Find <span>a buyer</span> for your property
-           </h1>
-           <p>
-            Get free access to our large buyer directory and see if there is
-            interest in homes like yours in your local area.
-           </p>
+        <div className={styles.flexbox}>
+          <section className={styles.content}>
+            <h1 className={styles.headline}>
+              Find <span>a buyer</span> for your property
+            </h1>
+            <p>
+              Get free access to our large buyer directory and see if there is
+              interest in homes like yours in your local area.
+            </p>
           </section>
           <form onSubmit={handleSubmit} className={styles.form}>
             <fieldset className={styles.fieldset}>
